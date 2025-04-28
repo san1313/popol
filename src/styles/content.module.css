@@ -1,0 +1,139 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-width);
+}
+
+.content.close {
+  margin-left: var(--sidebar-width-closed);
+}
+
+.article {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  display: flex;
+}
+
+.title {
+  color: white;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  opacity: 0.8;
+  filter: brightness(0.5);
+  width: 100%;
+  height: 100%;
+  background-image: url("@static/images/title_bg.png");
+  background-size: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.title article {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5rem;
+}
+
+.title span {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.title article h1 {
+  font-size: 8rem;
+  padding: 1rem 0.5rem;
+  filter: drop-shadow(3px 3px 4px #171717);
+  text-align: center;
+}
+
+.gradientTxt {
+  color: #D8F0FA;
+  background-image: linear-gradient(45deg, #D8F0FA, #C6E6F9, #AED1F1, #97BDFC, #84ACF7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title article h2 {
+  font-size: 4rem;
+  filter: drop-shadow(2px 1px 2px #171717);
+  text-align: center;
+}
+
+.title article p {
+  font-size: 2rem;
+  filter: drop-shadow(2px 1px 2px #171717);
+  text-align: center;
+  font-weight: 500;
+  padding: 5px 0;
+}
+
+.scrollArrow {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transform: rotate(-45deg);
+  -webkit-animation: arrow 2s infinite;
+  animation: arrow 2s infinite;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+.scrollArrow:nth-of-type(1) {
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
+}
+.scrollArrow:nth-of-type(2) {
+  bottom: 17vh;
+  -webkit-animation-delay: .15s;
+  animation-delay: .15s;
+}
+.scrollArrow:nth-of-type(3) {
+  bottom: 19vh;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes arrow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes arrow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.article.test {
+  background-color: #171717;
+}
+
+.article.test2 {
+  background-color: blue;
+}
