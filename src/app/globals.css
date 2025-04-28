@@ -16,28 +16,28 @@
   font-family: 'Paperlogy';
   font-weight: 900;
   src: local('Paperlogy Black'),
-  url('@static/fonts/Paperlogy-9Black.ttf');
+  url('/public/fonts/Paperlogy-9Black.ttf');
 }
 
 @font-face {
   font-family: 'Paperlogy';
   font-weight: 700;
   src: local('Paperlogy Bold'),
-  url('@static/fonts/Paperlogy-7Bold.ttf');
+  url('/public/fonts/Paperlogy-7Bold.ttf');
 }
 
 @font-face {
   font-family: 'Paperlogy';
   font-weight: 500;
   src: local('Paperlogy Medium'),
-  url('@static/fonts/Paperlogy-5Medium.ttf');
+  url('/public/fonts/Paperlogy-5Medium.ttf');
 }
 
 @font-face {
   font-family: 'Paperlogy';
   font-weight: 400;
   src: local('Paperlogy Regular'),
-  url('@static/fonts/Paperlogy-4Regular.ttf');
+  url('/public/fonts/Paperlogy-4Regular.ttf');
 }
 
 html,
