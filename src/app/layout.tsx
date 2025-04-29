@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "개발자 배창우의 포트폴리오입니다.",
 };
 
+export const viewport = "width=device-width, initial-scale=1, user-scalable=no";
+
 export default function RootLayout({
   children,
 }: Readonly<{

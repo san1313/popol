@@ -72,3 +72,32 @@
 .arrowBtnLeft.toRight {
   transform: rotate(-180deg);
 }
+
+@media (max-width: 767px) {
+  .sidebar {
+    width: 100vw;
+    float : none;
+    height: 20vh;
+    position: relative;
+    justify-content: center;
+  }
+
+  .linkContainer {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sidebar {
+    width: var(--sidebar-width-tablet);
+  }
+
+  .sidebar.close {
+    transform: translateX(calc(var(--sidebar-width-tablet) * -1 + var(--sidebar-width-tablet-closed)));
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .idxContainer {
+    font-size: 1.5rem;
+  }
+}

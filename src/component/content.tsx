@@ -5,7 +5,11 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Content(props: { sidebarIsOpen: boolean, sidebarWidth: {opened: string, closed: string}}) {
+export default function Content(props: {
+  viewport: number,
+  sidebarIsOpen: boolean,
+  sidebarWidth: {opened: string, closed: string}
+}) {
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   useEffect(() => {

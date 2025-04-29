@@ -3,26 +3,39 @@ import style from '@/styles/sidebar.module.css';
 import ArrowBtn from '@/component/ArrowBtn';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import COMMON from '@/constants/common';
 
 export default function SideBar(props: {
+  viewport: number,
   sidebarIsOpen: boolean,
   setSidebarIsOpen: (isOpen: (prev: boolean) => boolean) => void
 }) {
+  const linkRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const tagRef = useRef<HTMLDivElement>(null);
-  const linkRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (props.viewport >= COMMON.MAX_VIEWPORT_MOBILE) {
+      gsap.to([tagRef.current, linkRef.current], {
+        opacity: 1,
+        duration: 1.0,
+        delay: 0.3,
+        overwrite: 'auto'
+      })
+    }}, [props.viewport]);
 
   const handleArrowClick = () => {
     arrowRef.current = !arrowRef.current;
     if (sidebarRef.current) {
       sidebarRef.current.classList.toggle(style.close);
-      if(props.sidebarIsOpen) {
-        gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4, scrub:true})
-        gsap.to([tagRef.current, linkRef.current], { visibility: 'hidden', delay: 0.3, scrub:true})
+      if (props.sidebarIsOpen) {
+        gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4, scrub: true })
+        gsap.to([tagRef.current, linkRef.current],
+          { visibility: 'hidden', delay: 0.3, scrub: true })
       } else {
-        gsap.to([tagRef.current, linkRef.current], { opacity: 1, duration: 0.5, scrub:true})
-        gsap.to([tagRef.current, linkRef.current], { visibility: 'visible', scrub:true})
+        gsap.to([tagRef.current, linkRef.current], { opacity: 1, duration: 0.5, scrub: true })
+        gsap.to([tagRef.current, linkRef.current], { visibility: 'visible', scrub: true })
       }
     }
     props.setSidebarIsOpen((prev: boolean) => !prev);
@@ -33,18 +46,9 @@ export default function SideBar(props: {
     const hash = (e.target as HTMLAnchorElement).hash
     const targetSection = document.querySelector(hash);
     if (targetSection) {
-      targetSection.scrollIntoView({behavior: 'smooth'});
+      targetSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-  useEffect(() => {
-    gsap.to([tagRef.current, linkRef.current], {
-      opacity: 1,
-      duration: 1.0,
-      delay: 0.3,
-      overwrite: 'auto'
-    })
-  }, []);
 
   const index = [
     { id: 'title', txt: '저는요' },
@@ -55,14 +59,21 @@ export default function SideBar(props: {
   return (
     <>
     <div ref={sidebarRef} className={style.sidebar}>
-      <ArrowBtn onClick={handleArrowClick}></ArrowBtn>
-      <div className={style.idxContainer} ref={tagRef}>
-        <ul>
-          {index.map((item, idx) =>
-            <li key={idx}><a href={`#${item.id}`} onClick={fixAnchorEvent}>{item.txt}</a></li>
-          )}
-        </ul>
-      </div>
+      {props.viewport <= COMMON.MAX_VIEWPORT_MOBILE
+        ?
+        <></>
+        :
+        <>
+            <ArrowBtn onClick={handleArrowClick}></ArrowBtn>
+            <div className={style.idxContainer} ref={tagRef}>
+            <ul>
+              {index.map((item, idx) =>
+                <li key={idx}><a href={`#${item.id}`} onClick={fixAnchorEvent}>{item.txt}</a></li>
+              )}
+            </ul>
+          </div>
+        </>
+      }
       <div className={style.linkContainer} ref={linkRef}>
         <a href={'mailto:skan143679@gmail.com'}><span>skan134679@gmail.com</span></a>
         <a href={'https://github.com/san1313'}>Github</a>
