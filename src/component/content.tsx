@@ -1,7 +1,7 @@
 'use client'
 import style from '@/styles/content.module.css';
 import sidebarStyle from '@/styles/sidebar.module.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, WheelEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,6 +12,7 @@ export default function Content(props: {
 }) {
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -42,11 +43,41 @@ export default function Content(props: {
     function updateActive(idx: number) {
       document.querySelectorAll(`.${sidebarStyle.sidebar} li`).forEach((ele, i) => {
         if (ele instanceof HTMLLIElement) {
-          gsap.to(ele, {color: i === idx ? 'yellow' : 'white', duration: 0.5})
+          gsap.to(ele, { color: i === idx ? 'yellow' : 'white', duration: 0.5 })
         }
       })
     }
+
+    function preventDefaultWheel(event: unknown) {
+      const wheelEvent = event as WheelEvent;
+      wheelEvent.preventDefault();
+    }
+
+    window.addEventListener("wheel", preventDefaultWheel, { passive: false });
+    return () => window.removeEventListener("wheel", preventDefaultWheel);
   }, []);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll(`.${style.article}`);
+    let handleThrottle: NodeJS.Timeout | null = null;
+    function handleWheel(event: unknown) {
+      if (handleThrottle) return;
+      const wheelEvent = event as WheelEvent;
+      handleThrottle = setTimeout(() => {
+        if (wheelEvent.deltaY > 0 && currentIndex < sections.length - 1) {
+          setCurrentIndex((prev:number) => prev + 1);
+        } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
+          setCurrentIndex((prev:number) => prev - 1);
+        }
+        handleThrottle = null;
+      }, 200)
+    }
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    sections[currentIndex]?.scrollIntoView({ behavior: "smooth" });
+
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [currentIndex]);
 
   useEffect(() => {
     if(contentsRef.current) {
@@ -75,7 +106,11 @@ export default function Content(props: {
               </div>
             </article>
         </div>
-        <div className={`${style.article} ${style.test}`} id={'work'}></div>
+        <div className={`${style.article}`} id={'work'}>
+          <article>
+            내용
+          </article>
+        </div>
         <div className={`${style.article} ${style.test2}`} id={'project'}></div>
         <div className={`${style.article} ${style.test}`} id={'education'}></div>
         <div className={`${style.article} ${style.test2}`}></div>
