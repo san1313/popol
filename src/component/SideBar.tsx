@@ -6,6 +6,8 @@ import gsap from 'gsap';
 import COMMON from '@/constants/common';
 
 export default function SideBar(props: {
+  currentIndex: number,
+  setCurrentIndex: (idx: number) => void,
   viewport: number,
   sidebarIsOpen: boolean,
   setSidebarIsOpen: (isOpen: (prev: boolean) => boolean) => void
@@ -45,8 +47,9 @@ export default function SideBar(props: {
     e.preventDefault();
     const hash = (e.target as HTMLAnchorElement).hash
     const targetSection = document.querySelector(hash);
-    if (targetSection) {
+    if (targetSection instanceof HTMLDivElement) {
       targetSection.scrollIntoView({ behavior: 'smooth' });
+      props.setCurrentIndex(Number(targetSection.dataset.idx));
     }
   }
 
@@ -55,6 +58,7 @@ export default function SideBar(props: {
     { id: 'work', txt: '경력' },
     { id: 'project', txt: '프로젝트' },
     { id: 'education', txt: '학력 및 교육' },
+    { id: 'certificate', txt: '자격증'},
   ];
   return (
     <>

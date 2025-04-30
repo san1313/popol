@@ -13,6 +13,7 @@ export default function Home() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
   const [sidebarWidth] = useState({opened: '15vw', closed: '50px'});
   const [viewport, setViewport] = useState(COMMON.DEFAULT_VIEWPORT);
+  const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     setViewport(window.innerWidth);
     const resizeViewportWidth = () => {
@@ -28,9 +29,9 @@ export default function Home() {
   return (
     <>
       <div className={style.container}>
-        <Content viewport={viewport} sidebarIsOpen={sidebarIsOpen} sidebarWidth={sidebarWidth}></Content>
+        <Content currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} sidebarWidth={sidebarWidth}></Content>
         <TopBtn/>
-        <SideBar viewport={viewport} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen}></SideBar>
+        <SideBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen}></SideBar>
       </div>
     </>
   );

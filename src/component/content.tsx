@@ -1,18 +1,20 @@
 'use client'
 import style from '@/styles/content.module.css';
 import sidebarStyle from '@/styles/sidebar.module.css';
-import { useEffect, useRef, useState, WheelEvent } from 'react';
+import { useEffect, useRef, WheelEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Content(props: {
+  currentIndex: number,
+  setCurrentIndex: (idx: (prev: number) => number) => void,
   viewport: number,
   sidebarIsOpen: boolean,
-  sidebarWidth: {opened: string, closed: string}
+  sidebarWidth: { opened: string, closed: string }
 }) {
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -27,6 +29,23 @@ export default function Content(props: {
         })
       })
     }
+
+    const articles = document.querySelectorAll(`.${style.article}:not([id="title"])`);
+    articles.forEach((article) => {
+      gsap.fromTo(article,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 2,
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: article,
+            start: 'top 80%',
+            end: 'top 30%',
+          }
+        }
+      )
+    })
 
     const sections = document.querySelectorAll(`.${style.article}:not([data-page])`);
     sections.forEach((section, idx) => {
@@ -60,24 +79,25 @@ export default function Content(props: {
   useEffect(() => {
     const sections = document.querySelectorAll(`.${style.article}`);
     let handleThrottle: NodeJS.Timeout | null = null;
+
     function handleWheel(event: unknown) {
       if (handleThrottle) return;
       const wheelEvent = event as WheelEvent;
       handleThrottle = setTimeout(() => {
-        if (wheelEvent.deltaY > 0 && currentIndex < sections.length - 1) {
-          setCurrentIndex((prev:number) => prev + 1);
-        } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
-          setCurrentIndex((prev:number) => prev - 1);
+        if (wheelEvent.deltaY > 0 && props.currentIndex < sections.length - 1) {
+          props.setCurrentIndex((prev: number) => prev + 1);
+        } else if (wheelEvent.deltaY < 0 && props.currentIndex > 0) {
+          props.setCurrentIndex((prev: number) => prev - 1);
         }
         handleThrottle = null;
       }, 200)
     }
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-    sections[currentIndex]?.scrollIntoView({ behavior: "smooth" });
+    sections[props.currentIndex]?.scrollIntoView({ behavior: "smooth" });
 
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentIndex]);
+  }, [props, props.currentIndex]);
 
   useEffect(() => {
     if (contentsRef.current) {
@@ -92,7 +112,7 @@ export default function Content(props: {
   return (
     <>
       <div className={style.content} ref={contentsRef}>
-        <div className={`${style.article} ${style.title}`} ref={titleRef} id={'title'}>
+        <div className={`${style.article} ${style.title}`} ref={titleRef} id={'title'} data-idx={0}>
             <article>
               <h2>개발을 좋아하고 호기심이 넘치는</h2>
               <span><h1 className={style.gradientTxt}>배창우</h1><h2>입니다.</h2></span>
@@ -106,13 +126,13 @@ export default function Content(props: {
               </div>
             </article>
         </div>
-        <div className={`${style.article}`} id={'work'}>
+        <div className={`${style.article}`} id={'work'} data-idx={1}>
           <article>
-            <h1>경력<hr/></h1>
+            <h1>경력<hr /></h1>
             <div className={style.flexContainer}>
-              <div style={{marginTop:"-3rem"}}>
+              <div>
                 <span><h2>㈜ 아이티아이즈</h2><p>&ensp;(2023. 09. 25 ~ 2024. 05. 03)</p></span>
-                <h3 style={{marginTop:"0.5rem"}}>학점은행제 복수기관 학습자 대출시스템 등 구축(1, 2차) - 한국장학재단</h3>
+                <h3 style={{ marginTop: "0.5rem" }}>학점은행제 복수기관 학습자 대출시스템 등 구축(1, 2차) - 한국장학재단</h3>
               </div>
               <div>
                 <h3>■ 수행 업무</h3>
@@ -134,9 +154,16 @@ export default function Content(props: {
             </div>
           </article>
         </div>
-        <div className={`${style.article} ${style.test2}`} id={'project'}></div>
-        <div className={`${style.article} ${style.test}`} id={'education'}></div>
-        <div className={`${style.article} ${style.test2}`} id={'certificate'}></div>
+        <div className={`${style.article}`} id={'project'} data-idx={2}>
+          <article>
+            <h1>프로젝트<hr /></h1>
+            <div className={style.flexContainer}>
+
+            </div>
+          </article>
+        </div>
+        <div className={`${style.article} ${style.test}`} id={'education'} data-idx={3}></div>
+        <div className={`${style.article} ${style.test2}`} id={'certificate'} data-idx={4}></div>
       </div>
     </>
   )
