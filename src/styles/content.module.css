@@ -70,6 +70,10 @@
   justify-content: left;
 }
 
+.article a {
+  text-decoration: underline;
+}
+
 .title {
   color: white;
   align-items: center;

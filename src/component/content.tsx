@@ -47,7 +47,7 @@ export default function Content(props: {
       )
     })
 
-    const sections = document.querySelectorAll(`.${style.article}:not([data-page])`);
+    const sections = document.querySelectorAll(`.${style.article}:not([data-sub])`);
     sections.forEach((section, idx) => {
       ScrollTrigger.create({
         trigger: section,
@@ -158,12 +158,48 @@ export default function Content(props: {
           <article>
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
-
+              <div className={style.flexContainer}>
+                <h2>■ <a href={"https://github.com/san1313/PenService"}>PenService - 볼펜공장 MES 시스템</a></h2>
+                <h3>개발 기간 : 2023.04.19. ~ 2023.06.14.</h3>
+                <h3>개발 환경 : SpringBoot, Oracle, AWS, Ubuntu, Maven, ThymeLeaf</h3>
+                <h3>사용 언어 : Java, HTML5, CSS, JavaScript</h3>
+                <h3>사용 라이브러리 : Spring Security, Lombok, MyBatis, jQuery, BootStrap, TUI Grid 등</h3>
+                <h3>배포 : Docker, Jenkins, Github</h3>
+                <div>
+                  <h3>역할</h3>
+                  <p>- 팀원 보조 및 모듈 통합 등 팀장으로서의 역할과 개발 계획 작성</p>
+                  <p>- 데이터 베이스 모델링, AWS를 활용한 Oracle 데이터베이스 구축</p>
+                  <p>- MVC2 패턴을 활용한 개발환경 구축, GIT관리</p>
+                  <p>- ThymeLeaf를 활용한 레이아웃 구성</p>
+                  <p>- Spring Security를 활용한 접속 권한 관리, 공통 관리 기능 및 품질 관리 기능 작성</p>
+                </div>
+              </div>
             </div>
           </article>
         </div>
-        <div className={`${style.article} ${style.test}`} id={'education'} data-idx={3}></div>
-        <div className={`${style.article} ${style.test2}`} id={'certificate'} data-idx={4}></div>
+        <div className={`${style.article}`} data-idx={3} data-sub={true}>
+          <article>
+            <h1>프로젝트<hr /></h1>
+            <div className={style.flexContainer}>
+              <div className={style.flexContainer}>
+                <h2>■ <a href={"https://github.com/san1313/Hotel-in-Earth"}>Hotel-in-Earth - 숙소 예약 플랫폼</a></h2>
+                <h3>개발 기간 : 2023.03.13. ~ 2023.03.24.</h3>
+                <h3>개발 환경 : Oracle, Apache Tomcat, Servlet</h3>
+                <h3>사용 언어 : Java, HTML5, CSS, JavaScript</h3>
+                <h3>사용 라이브러리 :Lombok, MyBatis, Tiles, jQuery, BootStrap, Google Maps 등</h3>
+                <div>
+                  <h3>역할</h3>
+                  <p>- 팀원 보조 및 모듈 통합 등 팀장으로서의 역할과 개발 계획 작성</p>
+                  <p>- 데이터 베이스 모델링, MVC 패턴을 활용한 개발환경 구축</p>
+                  <p>- GIT관리, Oracle 데이터베이스와 ajax를 활용한 동적 웹 게시판 구축</p>
+                  <p>- Tiles를 활용한 레이아웃 구성</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div className={`${style.article} ${style.test}`} id={'education'} data-idx={4}></div>
+        <div className={`${style.article} ${style.test2}`} id={'certificate'} data-idx={5}></div>
       </div>
     </>
   )
