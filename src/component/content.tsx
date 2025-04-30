@@ -28,7 +28,7 @@ export default function Content(props: {
       })
     }
 
-    const sections = document.querySelectorAll(`.${style.article}`);
+    const sections = document.querySelectorAll(`.${style.article}:not([data-page])`);
     sections.forEach((section, idx) => {
       ScrollTrigger.create({
         trigger: section,
@@ -80,14 +80,14 @@ export default function Content(props: {
   }, [currentIndex]);
 
   useEffect(() => {
-    if(contentsRef.current) {
+    if (contentsRef.current) {
       if (props.sidebarIsOpen) {
         contentsRef.current.classList.remove(style.close)
-      }else {
+      } else {
         contentsRef.current.classList.add(style.close)
       }
     }
-  }, [props.sidebarIsOpen]);
+  }, [props.sidebarIsOpen])
 
   return (
     <>
@@ -108,13 +108,36 @@ export default function Content(props: {
         </div>
         <div className={`${style.article}`} id={'work'}>
           <article>
-            내용
+            <h1>경력<hr/></h1>
+            <div className={style.flexContainer}>
+              <div style={{marginTop:"-3rem"}}>
+                <span><h2>㈜ 아이티아이즈</h2><p>&ensp;(2023. 09. 25 ~ 2024. 05. 03)</p></span>
+                <h3 style={{marginTop:"0.5rem"}}>학점은행제 복수기관 학습자 대출시스템 등 구축(1, 2차) - 한국장학재단</h3>
+              </div>
+              <div>
+                <h3>■ 수행 업무</h3>
+                <p>- Spring 및 Samsung Anyframe을 사용한 웹 풀스택 개발</p>
+                <p className={style.sub}>- 고도화 작업 및 신규 로직을 위한 DB 쿼리 변경 작업</p>
+                <p className={style.sub}>- 신규 API 연결에 따른 데이터 처리 배치 개발</p>
+                <p className={style.sub}>- 신규 페이지 작성 및 로직 연결, 검증 로직 개발</p>
+                <p>- MIPLATFORM을 사용한 UI개발</p>
+                <p>- 개발단 서버 ZEUS 컨테이너 관리</p>
+                <p>- Apache Jmeter를 사용한 주요 로직 부하테스트</p>
+              </div>
+              <div>
+                <h3>■ 주요 성과</h3>
+                <p>- 고객의 요구사항을 꼼꼼히 확인하여 차후 페이지 구성과 로직을 변경하는 일이 적도록 하였습니다.</p>
+                <p>- 신규 API 연결에 문제가 발생하였을 때, 주도적으로 원인을 분석하여 현업과 소통하였고, 프로젝트 진행에 큰 차질이 없도록 하였습니다.</p>
+                <p>- Javascript를 이용해 간단한 툴을 제작, 팀원들에게 배포하여 업무의 효율을 증가시켰습니다.</p>
+                <p>- 부하테스트 진행 시, 인력 및 기간 상의 문제가 발생하였으나, 고객과 원만한 합의를 이끌어내어 테스트를 성공적으로 진행시켰습니다.</p>
+              </div>
+            </div>
           </article>
         </div>
         <div className={`${style.article} ${style.test2}`} id={'project'}></div>
         <div className={`${style.article} ${style.test}`} id={'education'}></div>
-        <div className={`${style.article} ${style.test2}`}></div>
-        </div>
+        <div className={`${style.article} ${style.test2}`} id={'certificate'}></div>
+      </div>
     </>
   )
 }

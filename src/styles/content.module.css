@@ -8,16 +8,74 @@
   margin-left: var(--sidebar-width-closed);
 }
 
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-bottom: 5vh;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
 .article {
   min-height: 100vh;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
   position: relative;
   display: flex;
 }
 
+.article article {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.article h1 {
+  font-size: 4.5rem;
+  font-weight: 900;
+  padding: 1rem 0;
+}
+
+.article hr {
+  margin-bottom: 1rem;
+}
+
+.article h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.article h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.article p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.article p.sub {
+  margin-left: 2rem;
+  margin-top: 0.3rem;
+}
+
+.article span {
+  display: flex;
+  align-items: baseline;
+  justify-content: left;
+}
+
 .title {
   color: white;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  display: flex;
 }
 
 .title::after {
@@ -38,7 +96,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 5rem;
+  width: 80%;
 }
 
 .title span {
@@ -49,9 +107,10 @@
 
 .title article h1 {
   font-size: 8rem;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   filter: drop-shadow(3px 3px 4px #171717);
   text-align: center;
+  margin-top: 0;
 }
 
 .gradientTxt {
@@ -105,6 +164,21 @@
   bottom: 19vh;
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  height: 10vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: var(--sidebar-width);
+}
+
+.header.close {
+  margin-left: var(--sidebar-width-closed);
 }
 
 @-webkit-keyframes arrow {
@@ -165,6 +239,53 @@
   .title::after {
     width: 100%;
     height: 100%;
+  }
+
+  .article h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
+
+  .article hr {
+    margin-bottom: 0.5rem;
+  }
+
+  .article h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  .article h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.6rem;
+  }
+
+  .article p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.6rem;
+  }
+
+  .article p.sub {
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+  }
+
+  .article span {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .article br {
+    display: none;
+  }
+
+  .title span {
+    flex-direction: row;
   }
 }
 
