@@ -11,7 +11,6 @@ import COMMON from '@/constants/common';
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
-  const [sidebarWidth] = useState({opened: '15vw', closed: '50px'});
   const [viewport, setViewport] = useState(COMMON.DEFAULT_VIEWPORT);
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function Home() {
   return (
     <>
       <div className={style.container}>
-        <Content currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} sidebarWidth={sidebarWidth}></Content>
+        <Content currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} sidebarIsOpen={sidebarIsOpen}></Content>
         <TopBtn/>
         <SideBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen}></SideBar>
       </div>

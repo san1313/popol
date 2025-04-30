@@ -8,13 +8,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function Content(props: {
   currentIndex: number,
   setCurrentIndex: (idx: (prev: number) => number) => void,
-  viewport: number,
   sidebarIsOpen: boolean,
-  sidebarWidth: { opened: string, closed: string }
 }) {
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-
+  const { currentIndex, setCurrentIndex, sidebarIsOpen} = props;
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -84,30 +82,30 @@ export default function Content(props: {
       if (handleThrottle) return;
       const wheelEvent = event as WheelEvent;
       handleThrottle = setTimeout(() => {
-        if (wheelEvent.deltaY > 0 && props.currentIndex < sections.length - 1) {
-          props.setCurrentIndex((prev: number) => prev + 1);
-        } else if (wheelEvent.deltaY < 0 && props.currentIndex > 0) {
-          props.setCurrentIndex((prev: number) => prev - 1);
+        if (wheelEvent.deltaY > 0 && currentIndex < sections.length - 1) {
+          setCurrentIndex((prev: number) => prev + 1);
+        } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
+          setCurrentIndex((prev: number) => prev - 1);
         }
         handleThrottle = null;
       }, 200)
     }
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-    sections[props.currentIndex]?.scrollIntoView({ behavior: "smooth" });
+    sections[currentIndex]?.scrollIntoView({ behavior: "smooth" });
 
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [props, props.currentIndex]);
+  }, [currentIndex, setCurrentIndex]);
 
   useEffect(() => {
     if (contentsRef.current) {
-      if (props.sidebarIsOpen) {
+      if (sidebarIsOpen) {
         contentsRef.current.classList.remove(style.close)
       } else {
         contentsRef.current.classList.add(style.close)
       }
     }
-  }, [props.sidebarIsOpen])
+  }, [sidebarIsOpen])
 
   return (
     <>

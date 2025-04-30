@@ -32,7 +32,7 @@ export default function SideBar(props: {
     if (sidebarRef.current) {
       sidebarRef.current.classList.toggle(style.close);
       if (props.sidebarIsOpen) {
-        gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4 })
+        gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4})
         gsap.to([tagRef.current, linkRef.current],
           { visibility: 'hidden', delay: 0.3 })
       } else {
