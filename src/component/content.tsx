@@ -149,7 +149,7 @@ export default function Content(props: {
                 <p>- 고객의 요구사항을 꼼꼼히 확인하여 차후 페이지 구성과 로직을 변경하는 일이 적도록 하였습니다.</p>
                 <p>- 신규 API 연결에 문제가 발생하였을 때, 주도적으로 원인을 분석하여 현업과 소통하였고, 프로젝트 진행에 큰 차질이 없도록 하였습니다.</p>
                 <p>- Javascript를 이용해 간단한 툴을 제작, 팀원들에게 배포하여 업무의 효율을 증가시켰습니다.</p>
-                <p>- 부하테스트 진행 시, 인력 및 기간 상의 문제가 발생하였으나, 고객과 원만한 합의를 이끌어내어 테스트를 성공적으로 진행시켰습니다.</p>
+                <p>- 부하테스트 진행 시 인력 및 기간 상의 문제가 발생하였으나, 고객과 원만한 합의를 이끌어내어 테스트를 성공적으로 진행시켰습니다.</p>
               </div>
             </div>
           </article>
@@ -203,23 +203,63 @@ export default function Content(props: {
           <article>
             <h1>학력 및 교육<hr /></h1>
             <div className={style.flexContainer}>
-              <div>
-                <h2>대구 강북고등학교 (졸업)</h2>
-                <h3>2014.03. ~ 2016.02.</h3>
+              <div className={style.flexContainer}>
+                <h2><big>■ 학력</big></h2>
+                <div>
+                  <h2>대구 강북고등학교 (졸업)</h2>
+                  <h3>2014.03. ~ 2016.02.</h3>
+                </div>
+                <div>
+                  <h2>계명대학교 일본학과 (학사 졸업)</h2>
+                  <h3>2016.03. ~ 2022.02.</h3>
+                </div>
               </div>
-              <div>
-                <h2>계명대학교 일본학과 (학사 졸업)</h2>
-                <h3>2016.03. ~ 2022.02.</h3>
-              </div>
-              <div>
-                <h2>㈜예담직업전문학교 (수료)</h2>
-                <h3>2022.12. ~ 2023.06.</h3>
-                <p style={{marginTop:0}}>클라우드 기반 Java 개발자 양성과정</p>
+              <div className={style.flexContainer}>
+                <h2><big>■ 교육</big></h2>
+                <div>
+                  <h2>㈜예담직업전문학교 (수료)</h2>
+                  <h3>2022.12. ~ 2023.06.</h3>
+                  <p className={"mt0"}>클라우드 기반 Java 개발자 양성과정</p>
+                </div>
+                <div>
+                  <h2>우아한테크코스 7기 프리코스</h2>
+                  <h3>2024.10.15 ~ 2024.11.12</h3>
+                  <p className={"mt0"}>최종심사 불합으로 프리코스만 진행</p>
+                </div>
               </div>
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} id={'certificate'} data-idx={5}></div>
+        <div className={`${style.article}`} id={'certificate'} data-idx={5}>
+          <article>
+            <h1>자격증<hr/></h1>
+            <div className={style.flexContainer}>
+              <div>
+                <div className={style.flexContainer}>
+                  <h2><big>■ 어학</big></h2>
+                  <div>
+                    <h2>일본어 JLPT 2급</h2>
+                    <h3>2017.01.</h3>
+                    <p className={"mt0"}>일본국제교류기금</p>
+                  </div>
+                </div>
+                <div className={style.flexContainer}>
+                  <h2><big>■ 자격증</big></h2>
+                  <div>
+                    <h2>운전면허 1종 보통</h2>
+                    <h3>2016. 01.</h3>
+                    <p className={"mt0"}>도로교통공단</p>
+                  </div>
+                  <div>
+                    <h2>ITQ 아래한글 (A)</h2>
+                    <h3>2008. 09.</h3>
+                    <p className={"mt0"}>한국생산성본부</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </>
   )

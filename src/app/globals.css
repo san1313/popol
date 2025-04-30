@@ -84,3 +84,7 @@ a {
     color-scheme: dark;
   }
 }
+
+.mt0 {
+  margin-top: 0 !important;
+}
