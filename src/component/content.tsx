@@ -159,7 +159,8 @@ export default function Content(props: {
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
               <div className={style.flexContainer}>
-                <h2>■ <a href={"https://github.com/san1313/PenService"}>PenService - 볼펜공장 MES 시스템</a></h2>
+                <h2>■ <a
+                  href={"https://github.com/san1313/PenService"}>PenService - 볼펜공장 MES 시스템</a></h2>
                 <h3>개발 기간 : 2023.04.19. ~ 2023.06.14.</h3>
                 <h3>개발 환경 : SpringBoot, Oracle, AWS, Ubuntu, Maven, ThymeLeaf</h3>
                 <h3>사용 언어 : Java, HTML5, CSS, JavaScript</h3>
@@ -198,8 +199,27 @@ export default function Content(props: {
             </div>
           </article>
         </div>
-        <div className={`${style.article} ${style.test}`} id={'education'} data-idx={4}></div>
-        <div className={`${style.article} ${style.test2}`} id={'certificate'} data-idx={5}></div>
+        <div className={`${style.article}`} id={'education'} data-idx={4}>
+          <article>
+            <h1>학력 및 교육<hr /></h1>
+            <div className={style.flexContainer}>
+              <div>
+                <h2>대구 강북고등학교 (졸업)</h2>
+                <h3>2014.03. ~ 2016.02.</h3>
+              </div>
+              <div>
+                <h2>계명대학교 일본학과 (학사 졸업)</h2>
+                <h3>2016.03. ~ 2022.02.</h3>
+              </div>
+              <div>
+                <h2>㈜예담직업전문학교 (수료)</h2>
+                <h3>2022.12. ~ 2023.06.</h3>
+                <p style={{marginTop:0}}>클라우드 기반 Java 개발자 양성과정</p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div className={`${style.article}`} id={'certificate'} data-idx={5}></div>
       </div>
     </>
   )
