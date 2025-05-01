@@ -8,10 +8,12 @@ import {
   faCakeCandles,
   faEnvelope,
   faLocationDot,
+  faPhone,
   faUser, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
+import ProjectSection from '@/component/ProjectSection';
+import SvgImages from './SvgImages';
 
 export default function Content(props: {
   currentIndex: number,
@@ -149,6 +151,10 @@ export default function Content(props: {
                 <h3>- 대구광역시 북구 구암동</h3>
               </div>
               <div>
+                <h2><span><FontAwesomeIcon icon={faPhone} />연락처</span></h2>
+                <h3>- 010-6632-4496</h3>
+              </div>
+              <div>
                 <h2><span><FontAwesomeIcon icon={faEnvelope} />이메일</span></h2>
                 <h3>- <a href={"mailto:skan134679@gmail.com"}>skan134679@gmail.com</a></h3>
               </div>
@@ -156,17 +162,21 @@ export default function Content(props: {
                 <h2><span><FontAwesomeIcon icon={faUserGraduate} />학력</span></h2>
                 <h3>- 계명대학교 (일본학과) 학사</h3>
               </div>
-              <div><span><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 98 96"><path fillRule="evenodd"
-                                                        clip-rule="evenodd"
-                                                        d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
-                                                        fill="#24292f" /></svg><h2><a
+              <div><span><SvgImages name={'github'}/><h2><a
                 href={"https://github.com/san1313"}>Github</a></h2></span>
                 </div>
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} id={'work'} data-idx={2}>
+        <div className={`${style.article}`} id={'skill'} data-idx={2}>
+          <article>
+            <h1>활용 기술<hr/></h1>
+            <div className={style.flexContainer}>
+
+            </div>
+          </article>
+        </div>
+        <div className={`${style.article}`} id={'work'} data-idx={3}>
           <article>
             <h1>경력<hr /></h1>
             <div className={style.flexContainer}>
@@ -194,52 +204,28 @@ export default function Content(props: {
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} id={'project'} data-idx={3}>
+        <div className={`${style.article}`} id={'project'} data-idx={4}>
           <article>
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
-              <div className={style.flexContainer}>
-                <h2>■ <a
-                  href={"https://github.com/san1313/PenService"}>PenService - 볼펜공장 MES 시스템</a></h2>
-                <h3>개발 기간 : 2023.04.19. ~ 2023.06.14.</h3>
-                <h3>개발 환경 : SpringBoot, Oracle, AWS, Ubuntu, Maven, ThymeLeaf</h3>
-                <h3>사용 언어 : Java, HTML5, CSS, JavaScript</h3>
-                <h3>사용 라이브러리 : Spring Security, Lombok, MyBatis, jQuery, BootStrap, TUI Grid 등</h3>
-                <h3>배포 : Docker, Jenkins, Github</h3>
-                <div>
-                  <h3>역할</h3>
-                  <p>- 팀원 보조 및 모듈 통합 등 팀장으로서의 역할과 개발 계획 작성</p>
-                  <p>- 데이터 베이스 모델링, AWS를 활용한 Oracle 데이터베이스 구축</p>
-                  <p>- MVC2 패턴을 활용한 개발환경 구축, GIT관리</p>
-                  <p>- ThymeLeaf를 활용한 레이아웃 구성</p>
-                  <p>- Spring Security를 활용한 접속 권한 관리, 공통 관리 기능 및 품질 관리 기능 작성</p>
-                </div>
+              <div className={style.projectContainer}>
+                <ProjectSection pNo={0}/>
+              </div>
+              <div className={style.projectContainer}>
+                <ProjectSection pNo={1}/>
               </div>
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} data-idx={4} data-sub={true}>
+        <div className={`${style.article}`} data-idx={5} data-sub={true}>
           <article>
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
-              <div className={style.flexContainer}>
-                <h2>■ <a href={"https://github.com/san1313/Hotel-in-Earth"}>Hotel-in-Earth - 숙소 예약 플랫폼</a></h2>
-                <h3>개발 기간 : 2023.03.13. ~ 2023.03.24.</h3>
-                <h3>개발 환경 : Oracle, Apache Tomcat, Servlet</h3>
-                <h3>사용 언어 : Java, HTML5, CSS, JavaScript</h3>
-                <h3>사용 라이브러리 :Lombok, MyBatis, Tiles, jQuery, BootStrap, Google Maps 등</h3>
-                <div>
-                  <h3>역할</h3>
-                  <p>- 팀원 보조 및 모듈 통합 등 팀장으로서의 역할과 개발 계획 작성</p>
-                  <p>- 데이터 베이스 모델링, MVC 패턴을 활용한 개발환경 구축</p>
-                  <p>- GIT관리, Oracle 데이터베이스와 ajax를 활용한 동적 웹 게시판 구축</p>
-                  <p>- Tiles를 활용한 레이아웃 구성</p>
-                </div>
-              </div>
+              <ProjectSection pNo={2}/>
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} id={'education'} data-idx={5}>
+        <div className={`${style.article}`} id={'education'} data-idx={6}>
           <article>
             <h1>학력 및 교육<hr /></h1>
             <div className={style.flexContainer}>
@@ -264,13 +250,12 @@ export default function Content(props: {
                 <div>
                   <h2>우아한테크코스 7기 프리코스</h2>
                   <h3>2024.10.15 ~ 2024.11.12</h3>
-                  <p className={"mt0"}>최종심사 불합으로 프리코스만 진행</p>
                 </div>
               </div>
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} id={'certificate'} data-idx={5}>
+        <div className={`${style.article}`} id={'certificate'} data-idx={7}>
           <article>
             <h1>자격증<hr /></h1>
             <div className={style.flexContainer}>

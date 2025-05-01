@@ -1,0 +1,188 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContainer {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+}
+
+.sliderContainer {
+  position: relative;
+  height: 24rem;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prevButton {
+  left: 1rem;
+}
+
+.nextButton {
+  right: 1rem;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(209, 213, 219, 0.8);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.activeIndicator {
+  background-color: #3182ce;
+}
+
+.projectInfo {
+  padding: 1.5rem;
+}
+
+.infoSection {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.comment {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.commentList li {
+  margin-bottom: 0.3rem;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.rolesList {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+.rolesList li {
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 767px) {
+  .modalContainer {
+    max-height: 98%;
+  }
+
+  .comment {
+    grid-template-columns: 1fr;
+  }
+
+  .modalHeader {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .sliderContainer {
+    height: 12rem;
+  }
+
+  .projectInfo {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .rolesList li {
+    margin-bottom: 0;
+  }
+}
