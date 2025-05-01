@@ -18,7 +18,7 @@ export default function ProjectModal({ isOpen, onClose, project, imgCount = 0 }:
   const projectImages = useMemo(() => {
     const imagesArr = [];
     for (let i = 1; i <= imgCount; i++) {
-      imagesArr.push(`/images/projects/${project.id}/${i}.png`);
+      imagesArr.push(`/images/projects/${project.id}/${i}.webp`);
     }
     return imagesArr;
   }, [imgCount, project.id]);
@@ -103,6 +103,7 @@ export default function ProjectModal({ isOpen, onClose, project, imgCount = 0 }:
             alt={`${project.title} 스크린샷 ${currentImageIndex + 1}`}
             className={styles.sliderImage}
             fill
+            unoptimized
           />
 
           <button
