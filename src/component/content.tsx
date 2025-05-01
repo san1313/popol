@@ -14,6 +14,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectSection from '@/component/ProjectSection';
 import SvgImages from './SvgImages';
+import CustomBadge from './CustomBadge';
 
 export default function Content(props: {
   currentIndex: number,
@@ -171,8 +172,47 @@ export default function Content(props: {
         <div className={`${style.article}`} id={'skill'} data-idx={2}>
           <article>
             <h1>활용 기술<hr/></h1>
-            <div className={style.flexContainer}>
-
+            <div className={style.flexContainer} style={{gap: "2rem"}}>
+              <div className={style.flexContainer}>
+                <h2>백엔드</h2>
+                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                  <CustomBadge name={'Java'} colorCode={"FF7800"} logoColor={"white"} />
+                  <CustomBadge name={'Spring'} colorCode={"6DB33F"} logoColor={"white"} />
+                  <CustomBadge name={'Spring Boot'} colorCode={"6DB33F"} logoColor={"white"} />
+                  <CustomBadge name={'Spring Security'} colorCode={"6DB33F"} logoColor={"white"} />
+                  <CustomBadge name={'JSP/Servlet'} colorCode={"FF7800"} logoColor={"white"} />
+                  <CustomBadge name={'ThymeLeaf'} colorCode={"005F0F"} logoColor={"white"} />
+                  <CustomBadge name={'Oracle'} colorCode={"F80000"} logoColor={"white"} />
+                  <CustomBadge name={'MySQL'} colorCode={"4479A1"} logoColor={"white"} />
+                  <CustomBadge name={'MyBatis'} colorCode={"000000"} logoColor={"white"} />
+                  <CustomBadge name={'Anyframe'} colorCode={"1428A0"} logoColor={"white"} />
+                </span>
+              </div>
+              <div className={style.flexContainer}>
+                <h2>프론트엔드</h2>
+                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                  <CustomBadge name={'HTML5'} colorCode={"E34F26"} logoColor={"white"} />
+                  <CustomBadge name={'CSS'} colorCode={"1572B6"} logoColor={"white"} />
+                  <CustomBadge name={'JavaScript'} colorCode={"F7DF1E"} logoColor={"white"} />
+                  <CustomBadge name={'TypeScript'} colorCode={"3178C6"} logoColor={"white"} />
+                  <CustomBadge name={'React'} colorCode={"61DAFB"} logoColor={"white"} />
+                  <CustomBadge name={'jQuery'} colorCode={"0769AD"} logoColor={"white"} />
+                  <CustomBadge name={'BootStrap'} colorCode={"7952B3"} logoColor={"white"} />
+                  <CustomBadge name={'Toast UI Grid'} colorCode={"515ce6"} logoColor={"white"} />
+                  <CustomBadge name={'MiPlatform'} colorCode={"3abcd4"} logoColor={"white"} />
+                </span>
+              </div>
+              <div className={style.flexContainer}>
+                <h2>기타</h2>
+                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                  <CustomBadge name={'Next.js'} colorCode={"000000"} logoColor={"white"} />
+                  <CustomBadge name={'Git'} colorCode={"F05032"} logoColor={"white"} />
+                  <CustomBadge name={'SVN'} colorCode={"809CC9"} logoColor={"white"} logoName={'subversion'}/>
+                  <CustomBadge name={'Docker'} colorCode={"2496ED"} logoColor={"white"} />
+                  <CustomBadge name={'Jenkins'} colorCode={"D24939"} logoColor={"white"} />
+                  <CustomBadge name={'Apache Jmeter'} colorCode={"D22128"} logoColor={"white"} />
+                </span>
+              </div>
             </div>
           </article>
         </div>
