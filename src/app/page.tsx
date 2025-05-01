@@ -29,7 +29,7 @@ export default function Home() {
     <>
       <div className={style.container}>
         <Content currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} sidebarIsOpen={sidebarIsOpen}></Content>
-        <TopBtn/>
+        <TopBtn currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}/>
         <SideBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen}></SideBar>
       </div>
     </>
