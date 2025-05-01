@@ -71,6 +71,12 @@
   justify-content: left;
 }
 
+.article span svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
 .article a {
   text-decoration: underline;
 }

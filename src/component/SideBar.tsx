@@ -54,7 +54,8 @@ export default function SideBar(props: {
   }
 
   const index = [
-    { id: 'title', txt: '저는요' },
+    { id: 'title', txt: '홈' },
+    { id: 'about', txt: '저는요' },
     { id: 'work', txt: '경력' },
     { id: 'project', txt: '프로젝트' },
     { id: 'education', txt: '학력 및 교육' },
