@@ -24,6 +24,15 @@ export default function ProjectModal({ isOpen, onClose, project, imgCount = 0 }:
   }, [imgCount, project.id]);
 
   useEffect(() => {
+    if (isOpen) {
+      projectImages.forEach((imageSrc) => {
+        const img = new window.Image();
+        img.src = imageSrc;
+      })
+    }
+  }, [isOpen, projectImages]);
+
+  useEffect(() => {
     if (modalRef.current) {
       gsap.fromTo(
         modalRef.current,
