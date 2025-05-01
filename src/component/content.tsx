@@ -12,7 +12,7 @@ export default function Content(props: {
 }) {
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const { currentIndex, setCurrentIndex, sidebarIsOpen} = props;
+  const { currentIndex, setCurrentIndex, sidebarIsOpen } = props;
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -230,29 +230,27 @@ export default function Content(props: {
         </div>
         <div className={`${style.article}`} id={'certificate'} data-idx={5}>
           <article>
-            <h1>자격증<hr/></h1>
+            <h1>자격증<hr /></h1>
             <div className={style.flexContainer}>
-              <div>
-                <div className={style.flexContainer}>
-                  <h2><big>■ 어학</big></h2>
-                  <div>
-                    <h2>일본어 JLPT 2급</h2>
-                    <h3>2017.01.</h3>
-                    <p className={"mt0"}>일본국제교류기금</p>
-                  </div>
+              <div className={style.flexContainer}>
+                <h2><big>■ 어학</big></h2>
+                <div>
+                  <h2>일본어 JLPT 2급</h2>
+                  <h3>2017.01.</h3>
+                  <p className={"mt0"}>일본국제교류기금</p>
                 </div>
-                <div className={style.flexContainer}>
-                  <h2><big>■ 자격증</big></h2>
-                  <div>
-                    <h2>운전면허 1종 보통</h2>
-                    <h3>2016. 01.</h3>
-                    <p className={"mt0"}>도로교통공단</p>
-                  </div>
-                  <div>
-                    <h2>ITQ 아래한글 (A)</h2>
-                    <h3>2008. 09.</h3>
-                    <p className={"mt0"}>한국생산성본부</p>
-                  </div>
+              </div>
+              <div className={style.flexContainer}>
+                <h2><big>■ 자격증</big></h2>
+                <div>
+                  <h2>운전면허 1종 보통</h2>
+                  <h3>2016. 01.</h3>
+                  <p className={"mt0"}>도로교통공단</p>
+                </div>
+                <div>
+                  <h2>ITQ 아래한글 (A)</h2>
+                  <h3>2008. 09.</h3>
+                  <p className={"mt0"}>한국생산성본부</p>
                 </div>
               </div>
             </div>
