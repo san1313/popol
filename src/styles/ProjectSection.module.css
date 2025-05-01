@@ -39,10 +39,9 @@
 }
 
 .projectTitle {
-  font-size: 1.25rem;
-  font-weight: bold;
   margin-bottom: 0.75rem;
   color: #3182ce;
+  display: inline-block;
   cursor: pointer;
 }
 
