@@ -85,10 +85,9 @@ export default function ProjectSection({ pNo }: { pNo: number }) {
     <div className={styles.projectSection}>
       <div className={styles.projectList}>
         {projects[pNo].map((project) => (
-          <div key={project.id} className={styles.projectCard}>
+          <div key={project.id} className={styles.projectCard} onClick={() => openModal(project)}>
             <h2
               className={styles.projectTitle}
-              onClick={() => openModal(project)}
             >
               ■ {project.title}
             </h2>

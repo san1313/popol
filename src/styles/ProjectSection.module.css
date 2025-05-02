@@ -32,6 +32,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
   background-color: #FAF6F1;
+  cursor: pointer;
 }
 
 .projectCard:hover {
@@ -42,11 +43,6 @@
   margin-bottom: 0.75rem;
   color: #3182ce;
   display: inline-block;
-  cursor: pointer;
-}
-
-.projectTitle:hover {
-  text-decoration: underline;
 }
 
 .projectDetails {
@@ -54,4 +50,21 @@
   flex-direction: column;
   gap: 0.5rem;
   font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .projectCard {
+    background-color: #374c6d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.5) inset;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .projectCard:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  }
+
+  .projectTitle {
+    color: #ff6f61;
+  }
 }
