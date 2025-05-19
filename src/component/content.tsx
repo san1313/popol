@@ -303,7 +303,7 @@ export default function Content(props: {
                 <h2><big>■ 어학</big></h2>
                 <div>
                   <h2>일본어 JLPT 2급</h2>
-                  <h3>2017.01.</h3>
+                  <h3>2015.08.</h3>
                   <p className={"mt0"}>일본국제교류기금</p>
                 </div>
               </div>
