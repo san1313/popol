@@ -56,15 +56,29 @@ export default function Content(props: {
       )
     })
 
-    const sections = document.querySelectorAll(`.${style.article}:not([data-sub])`);
+    const sections = document.querySelectorAll(`.${style.article}:not([data-ref-idx])`) as NodeListOf<HTMLDivElement>;
+    const subSections = document.querySelectorAll(`.${style.article}[data-ref-idx]`) as NodeListOf<HTMLDivElement>;
+
     sections.forEach((section, idx) => {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 10%',
-        end: 'bottom top',
+        start: 'top 20%',
+        end: 'bottom 20%',
         scrub: true,
         onEnter: () => updateActive(idx),
         onEnterBack: () => updateActive(idx)
+      })
+
+    })
+    subSections.forEach((section) => {
+      const refIdx = Number(section.dataset.refIdx);
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 20%',
+        end: 'bottom 20%',
+        scrub: true,
+        onEnter: () => updateActive(refIdx),
+        onEnterBack: () => updateActive(refIdx)
       })
     })
 
@@ -257,7 +271,7 @@ export default function Content(props: {
             </div>
           </article>
         </div>
-        <div className={`${style.article}`} data-idx={5} data-sub={true}>
+        <div className={`${style.article}`} data-idx={5} data-ref-idx={4}>
           <article>
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
