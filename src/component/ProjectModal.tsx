@@ -52,16 +52,16 @@ export default function ProjectModal({ isOpen, onClose, project, imgCount = 0 }:
 
     if (isOpen) {
       document.addEventListener('keydown', handleEsc);
-      // document.addEventListener('touchmove', disableScroll, { passive: false });
       document.addEventListener('wheel', disableScroll, { passive: false });
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
 
     return () => {
       document.removeEventListener('keydown', handleEsc);
-      // document.removeEventListener('touchmove', disableScroll);
       document.removeEventListener('wheel', disableScroll);
       document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
     };
   }, [isOpen, onClose]);
 
