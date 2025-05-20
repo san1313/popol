@@ -65,12 +65,12 @@
 .article p {
   font-size: 1.2rem;
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
 }
 
 .article p.sub {
   margin-left: 2rem;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 .article span {
