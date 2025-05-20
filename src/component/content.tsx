@@ -152,7 +152,7 @@ export default function Content(props: {
         <div className={`${style.article}`} id={'about'} data-idx={1}>
           <article>
             <h1>저는요<hr /></h1>
-            <div className={style.flexContainer} style={{gap: "2rem"}}>
+            <div className={style.flexContainer} style={{ gap: "2rem" }}>
               <div>
                 <h2><span><FontAwesomeIcon icon={faUser} />이름</span></h2>
                 <h3>- 배창우</h3>
@@ -177,7 +177,7 @@ export default function Content(props: {
                 <h2><span><FontAwesomeIcon icon={faUserGraduate} />학력</span></h2>
                 <h3>- 계명대학교 (일본학과) 학사</h3>
               </div>
-              <div><span><SvgImages name={'github'}/><h2><a
+              <div><span><SvgImages name={'github'} /><h2><a
                 href={"https://github.com/san1313"}>Github</a></h2></span>
                 </div>
             </div>
@@ -185,11 +185,11 @@ export default function Content(props: {
         </div>
         <div className={`${style.article}`} id={'skill'} data-idx={2}>
           <article>
-            <h1>활용 기술<hr/></h1>
-            <div className={style.flexContainer} style={{gap: "2rem"}}>
+            <h1>활용 기술<hr /></h1>
+            <div className={style.flexContainer} style={{ gap: "2rem" }}>
               <div className={style.flexContainer}>
                 <h2>백엔드</h2>
-                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                <span style={{ gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
                   <CustomBadge name={'Java'} colorCode={"FF7800"} logoColor={"white"} />
                   <CustomBadge name={'Spring'} colorCode={"6DB33F"} logoColor={"white"} />
                   <CustomBadge name={'Spring Boot'} colorCode={"6DB33F"} logoColor={"white"} />
@@ -204,7 +204,7 @@ export default function Content(props: {
               </div>
               <div className={style.flexContainer}>
                 <h2>프론트엔드</h2>
-                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                <span style={{ gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
                   <CustomBadge name={'HTML5'} colorCode={"E34F26"} logoColor={"white"} />
                   <CustomBadge name={'CSS'} colorCode={"1572B6"} logoColor={"white"} />
                   <CustomBadge name={'JavaScript'} colorCode={"F7DF1E"} logoColor={"white"} />
@@ -218,10 +218,11 @@ export default function Content(props: {
               </div>
               <div className={style.flexContainer}>
                 <h2>기타</h2>
-                <span style={{gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem"}}>
+                <span style={{ gap: "0.4rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
                   <CustomBadge name={'Next.js'} colorCode={"000000"} logoColor={"white"} />
                   <CustomBadge name={'Git'} colorCode={"F05032"} logoColor={"white"} />
-                  <CustomBadge name={'SVN'} colorCode={"809CC9"} logoColor={"white"} logoName={'subversion'}/>
+                  <CustomBadge name={'SVN'} colorCode={"809CC9"} logoColor={"white"}
+                               logoName={'subversion'} />
                   <CustomBadge name={'Docker'} colorCode={"2496ED"} logoColor={"white"} />
                   <CustomBadge name={'Jenkins'} colorCode={"D24939"} logoColor={"white"} />
                   <CustomBadge name={'Apache Jmeter'} colorCode={"D22128"} logoColor={"white"} />
@@ -240,20 +241,27 @@ export default function Content(props: {
               </div>
               <div>
                 <h3>■ 수행 업무</h3>
-                <p>- Spring 및 Samsung Anyframe을 사용한 웹 풀스택 개발</p>
-                <p className={style.sub}>- 고도화 작업 및 신규 로직을 위한 DB 쿼리 변경 작업</p>
-                <p className={style.sub}>- 신규 API 연결에 따른 데이터 처리 배치 개발</p>
-                <p className={style.sub}>- 신규 페이지 작성 및 로직 연결, 검증 로직 개발</p>
-                <p>- MIPLATFORM을 사용한 UI개발</p>
-                <p>- 개발단 서버 ZEUS 컨테이너 관리</p>
-                <p>- Apache Jmeter를 사용한 주요 로직 부하테스트</p>
+                <div className={style.indent}>
+                  <p>1. <b>Spring</b> 및 <b>Samsung Anyframe</b> 프레임워크를 사용한 웹 풀스택 개발</p>
+                  <p className={style.sub}>- 고도화 작업 및 신규 로직을 위한 DB 쿼리 작성/수정</p>
+                  <p className={style.sub}>- 신규 페이지 작성 및 로직 연결, 데이터 검증 로직 개발</p>
+                  <p>2. <b>MIPLATFORM</b>을 사용한 내부 프로그램 UI개발</p>
+                  <p className={style.sub}>- 사내 업무망 프로그램 신규 화면 기획/작성 및 기능 작성</p>
+                  <p>3. 보안 취약점 검사 및 코드 수정</p>
+                  <p>4. 신규 API 연결에 따른 데이터 처리 Batch 개발</p>
+                  <p>5. 개발단 서버 JEUS 컨테이너 관리</p>
+                  <p>6. <b>Apache Jmeter</b>를 사용한 주요 로직 부하테스트</p>
+                  <p>7. AngularJS 기반 모바일 페이지 유지보수</p>
+                </div>
               </div>
               <div>
                 <h3>■ 주요 성과</h3>
-                <p>- 고객의 요구사항을 꼼꼼히 확인하여 차후 페이지 구성과 로직을 변경하는 일이 적도록 하였습니다.</p>
-                <p>- 신규 API 연결에 문제가 발생하였을 때, 주도적으로 원인을 분석하여 현업과 소통하였고, 프로젝트 진행에 큰 차질이 없도록 하였습니다.</p>
-                <p>- Javascript를 이용해 간단한 툴을 제작, 팀원들에게 배포하여 업무의 효율을 증가시켰습니다.</p>
-                <p>- 부하테스트 진행 시 인력 및 기간 상의 문제가 발생하였으나, 고객과 원만한 합의를 이끌어내어 테스트를 성공적으로 진행시켰습니다.</p>
+                <div className={style.indent}>
+                  <p>1. 고객의 요구사항을 꼼꼼히 확인하여 차후 페이지 구성과 로직을 변경하는 일이 적도록 하였습니다.</p>
+                  <p>2. 신규 외부 API 연결에 문제가 발생하였을 때, 주도적으로 원인을 분석하여 IT현업과 소통하였고, 프로젝트 진행에 차질이 없도록 하였습니다.</p>
+                  <p>3. Javascript를 이용해 간단한 툴을 제작, 팀원들에게 배포하여 업무의 효율을 증가시켰습니다.</p>
+                  <p>4. 부하테스트 진행간 인력 및 기간 상의 문제가 있었으나, 지속적인 진행 상황 보고와 의견 제시로 고객과 원만한 합의를 이끌어내었고, 테스트를 성공적으로 진행시켜 고객이 만족할 수 있도록 하였습니다.</p>
+                </div>
               </div>
             </div>
           </article>
@@ -263,10 +271,10 @@ export default function Content(props: {
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
               <div className={style.projectContainer}>
-                <ProjectSection pNo={0}/>
+                <ProjectSection pNo={0} />
               </div>
               <div className={style.projectContainer}>
-                <ProjectSection pNo={1}/>
+                <ProjectSection pNo={1} />
               </div>
             </div>
           </article>
@@ -275,7 +283,7 @@ export default function Content(props: {
           <article>
             <h1>프로젝트<hr /></h1>
             <div className={style.flexContainer}>
-              <ProjectSection pNo={2}/>
+              <ProjectSection pNo={2} />
             </div>
           </article>
         </div>

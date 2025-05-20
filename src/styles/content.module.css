@@ -200,6 +200,10 @@
   margin-left: var(--sidebar-width-closed);
 }
 
+.indent {
+  margin-left: 2rem;
+}
+
 @-webkit-keyframes arrow {
   0% {
     opacity: 0;
@@ -335,5 +339,13 @@
 
   .title::after {
     background-position: 20%;
+  }
+
+  .article p {
+    margin-top: 0.6rem;
+  }
+
+  .article p.sub {
+    margin-top: 0.3rem;
   }
 }
