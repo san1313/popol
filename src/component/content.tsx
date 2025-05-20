@@ -140,7 +140,7 @@ export default function Content(props: {
               <h2>개발을 좋아하고 호기심이 넘치는</h2>
               <span><h1 className={style.gradientTxt}>배창우</h1><h2>입니다.</h2></span>
               <p>새로운 기술을 배우고 적용해 보는 것을 즐깁니다.</p>
-              <p>더 나은 코드, 더 나은 성능을 위해 항상 고민합니다.</p>
+              <p>반복되는 일을 자동화하고 비효율적인 프로세스를 개선하는 것을 좋아합니다.</p>
               <p>배운 것을 다른 사람과 이야기하는 것을 좋아합니다.</p>
               <div className={style.arrow}>
                 <div className={style.scrollArrow}></div>
