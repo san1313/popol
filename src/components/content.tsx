@@ -12,18 +12,15 @@ import {
   faUser, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ProjectSection from '@/component/ProjectSection';
+import ProjectSection from '@/components/ProjectSection';
 import SvgImages from './SvgImages';
 import CustomBadge from './CustomBadge';
+import { usePageDataStore } from '@/providers/PageDataProvider';
 
-export default function Content(props: {
-  currentIndex: number,
-  setCurrentIndex: (idx: (prev: number) => number) => void,
-  sidebarIsOpen: boolean,
-}) {
+export default function Content() {
+  const {currentIndex, incrementCurrentIndex, decrementCurrentIndex, sidebarIsOpen} = usePageDataStore((state) => state);
   const contentsRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const { currentIndex, setCurrentIndex, sidebarIsOpen } = props;
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -108,9 +105,9 @@ export default function Content(props: {
       const wheelEvent = event as WheelEvent;
       handleThrottle = setTimeout(() => {
         if (wheelEvent.deltaY > 0 && currentIndex < sections.length - 1) {
-          setCurrentIndex((prev: number) => prev + 1);
+          incrementCurrentIndex();
         } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
-          setCurrentIndex((prev: number) => prev - 1);
+          decrementCurrentIndex();
         }
         handleThrottle = null;
       }, 200)
@@ -120,7 +117,7 @@ export default function Content(props: {
     sections[currentIndex]?.scrollIntoView({ behavior: "smooth" });
 
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentIndex, setCurrentIndex]);
+  }, [currentIndex]);
 
   useEffect(() => {
     if (contentsRef.current) {
@@ -307,7 +304,7 @@ export default function Content(props: {
                 <div>
                   <h2>㈜예담직업전문학교 (수료)</h2>
                   <h3>2022.12. ~ 2023.06.</h3>
-                  <p className={"mt0"}>클라우드 기반 Java 개발자 양성과정</p>
+                  <p className='mt-0'>클라우드 기반 Java 개발자 양성과정</p>
                 </div>
                 <div>
                   <h2>우아한테크코스 7기 프리코스</h2>

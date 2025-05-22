@@ -1,37 +1,38 @@
 'use client'
 import style from '@/styles/sidebar.module.css';
-import ArrowBtn from '@/component/ArrowBtn';
+import ArrowBtn from '@/components/ArrowBtn';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import COMMON from '@/constants/common';
+import { usePageDataStore } from '@/providers/PageDataProvider';
 
-export default function SideBar(props: {
-  currentIndex: number,
-  setCurrentIndex: (idx: number) => void,
-  viewport: number,
-  sidebarIsOpen: boolean,
-  setSidebarIsOpen: (isOpen: (prev: boolean) => boolean) => void
-}) {
+export default function SideBar() {
+  const {
+    viewport,
+    sidebarIsOpen,
+    toggleSidebarIsOpen,
+    setCurrentIndex,
+  } = usePageDataStore(state => state);
   const linkRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const tagRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (props.viewport >= COMMON.MAX_VIEWPORT_MOBILE) {
+    if (viewport >= COMMON.MAX_VIEWPORT_MOBILE) {
       gsap.to([tagRef.current, linkRef.current], {
         opacity: 1,
         duration: 1.0,
         delay: 0.3,
         overwrite: 'auto'
       })
-    }}, [props.viewport]);
+    }}, [viewport]);
 
   const handleArrowClick = () => {
     arrowRef.current = !arrowRef.current;
     if (sidebarRef.current) {
       sidebarRef.current.classList.toggle(style.close);
-      if (props.sidebarIsOpen) {
+      if (sidebarIsOpen) {
         gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4})
         gsap.to([tagRef.current, linkRef.current],
           { visibility: 'hidden', delay: 0.3 })
@@ -40,7 +41,7 @@ export default function SideBar(props: {
         gsap.to([tagRef.current, linkRef.current], { visibility: 'visible' })
       }
     }
-    props.setSidebarIsOpen((prev: boolean) => !prev);
+    toggleSidebarIsOpen();
   }
 
   const fixAnchorEvent = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -49,7 +50,7 @@ export default function SideBar(props: {
     const targetSection = document.querySelector(hash);
     if (targetSection instanceof HTMLDivElement) {
       targetSection.scrollIntoView({ behavior: 'smooth' });
-      props.setCurrentIndex(Number(targetSection.dataset.idx));
+      setCurrentIndex(Number(targetSection.dataset.idx));
     }
   }
 
@@ -65,7 +66,7 @@ export default function SideBar(props: {
   return (
     <>
     <div ref={sidebarRef} className={style.sidebar}>
-      {props.viewport <= COMMON.MAX_VIEWPORT_MOBILE
+      {viewport <= COMMON.MAX_VIEWPORT_MOBILE
         ?
         <></>
         :

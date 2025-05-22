@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import styles from '@/styles/ProjectModal.module.css';
 import { projectType } from '@/types/ProjectSection';
 import gsap from 'gsap';
-import SvgImages from '@/component/SvgImages';
+import SvgImages from '@/components/SvgImages';
 import Image from 'next/image';
 
 export default function ProjectModal({ isOpen, onClose, project, imgCount = 0 }: {

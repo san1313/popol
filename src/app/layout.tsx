@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import { PageDataProvider } from '@/providers/PageDataProvider';
+import SideBar from '@/components/SideBar';
 
 export const metadata: Metadata = {
   title: "배창우 포트폴리오",
@@ -8,15 +11,16 @@ export const metadata: Metadata = {
 
 export const viewport = "width=device-width, initial-scale=1, user-scalable=no";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: { children: React.ReactNode; }) {
   return (
     <html lang="en">
       <body>
-        {children}
+      <ReactQueryProvider>
+        <PageDataProvider>
+          <SideBar />
+          {children}
+        </PageDataProvider>
+      </ReactQueryProvider>
       </body>
     </html>
   );

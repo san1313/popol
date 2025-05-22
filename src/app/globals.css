@@ -1,90 +1,93 @@
-:root {
-  --background: #F7F4EF;
-  --foreground: #171717;
-  --sidebar-width: 15vw;
-  --sidebar-width-closed: 50px;
-  --sidebar-width-tablet: 20vw;
-  --sidebar-width-tablet-closed: 50px;
-  --sidebar-width-mobile: 100vw;
-}
+@layer theme, base, components, utilities;
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss/theme.css" layer(theme);
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #2e2e2e;
-    --foreground: #ededed;
+    --background: #F7F4EF;
+    --foreground: #171717;
+    --sidebar-width: 15vw;
+    --sidebar-width-closed: 50px;
+    --sidebar-width-tablet: 20vw;
+    --sidebar-width-tablet-closed: 50px;
+    --sidebar-width-mobile: 100vw;
   }
-}
 
-@font-face {
-  font-family: 'Paperlogy';
-  font-weight: 900;
-  src: local('Paperlogy Black'),
-  url('/fonts/Paperlogy-9Black.ttf');
-}
-
-@font-face {
-  font-family: 'Paperlogy';
-  font-weight: 700;
-  src: local('Paperlogy Bold'),
-  url('/fonts/Paperlogy-7Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Paperlogy';
-  font-weight: 500;
-  src: local('Paperlogy Medium'),
-  url('/fonts/Paperlogy-5Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Paperlogy';
-  font-weight: 400;
-  src: local('Paperlogy Regular'),
-  url('/fonts/Paperlogy-4Regular.ttf');
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Paperlogy, Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-ul {
-  list-style: none;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  transition: margin 0.4s ease;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: light;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #2e2e2e;
+      --foreground: #ededed;
+    }
   }
-}
 
-.mt0 {
-  margin-top: 0 !important;
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 900;
+    src: local('Paperlogy Black'),
+    url('/fonts/Paperlogy-9Black.ttf');
+  }
+
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 700;
+    src: local('Paperlogy Bold'),
+    url('/fonts/Paperlogy-7Bold.ttf');
+  }
+
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 500;
+    src: local('Paperlogy Medium'),
+    url('/fonts/Paperlogy-5Medium.ttf');
+  }
+
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 400;
+    src: local('Paperlogy Regular'),
+    url('/fonts/Paperlogy-4Regular.ttf');
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Paperlogy, Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition: margin 0.4s ease;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: light;
+    }
+  }
 }

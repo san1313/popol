@@ -1,24 +1,21 @@
 'use client'
-import SideBar from '@/component/SideBar';
 import style from '@/styles/page.module.css'
-import { useEffect, useState } from 'react';
-import Content from '@/component/content';
-import TopBtn from '@/component/topBtn';
+import { useEffect } from 'react';
+import Content from '@/components/content';
+import TopBtn from '@/components/topBtn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import COMMON from '@/constants/common';
+import { usePageDataStore } from '@/providers/PageDataProvider';
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
-  const [viewport, setViewport] = useState(COMMON.DEFAULT_VIEWPORT);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { setViewport } = usePageDataStore((state) => state);
+
   useEffect(() => {
     setViewport(window.innerWidth);
     const resizeViewportWidth = () => {
       setViewport(window.innerWidth);
     }
-
     window.addEventListener('resize', resizeViewportWidth);
 
     return () => {
@@ -28,9 +25,8 @@ export default function Home() {
   return (
     <>
       <div className={style.container}>
-        <Content currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} sidebarIsOpen={sidebarIsOpen}></Content>
-        <TopBtn currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}/>
-        <SideBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} viewport={viewport} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen}></SideBar>
+        <Content />
+        <TopBtn />
       </div>
     </>
   );
