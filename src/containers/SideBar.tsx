@@ -4,7 +4,7 @@ import ArrowBtn from '@/components/ArrowBtn';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import COMMON from '@/constants/common';
-import { usePageDataStore } from '@/providers/PageDataProvider';
+import { usePageDataStore } from '@/stores/PageDataStore';
 
 export default function SideBar() {
   const {

@@ -1,11 +1,12 @@
 'use client'
 import style from '@/styles/page.module.css'
 import { useEffect } from 'react';
-import Content from '@/components/content';
 import TopBtn from '@/components/topBtn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { usePageDataStore } from '@/providers/PageDataProvider';
+import { usePageDataStore }  from '@/stores/PageDataStore';
+import { useEventListener } from '@/hooks/useEventListener';
+import Content from '@/containers/Content';
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
@@ -13,15 +14,16 @@ export default function Home() {
 
   useEffect(() => {
     setViewport(window.innerWidth);
-    const resizeViewportWidth = () => {
-      setViewport(window.innerWidth);
-    }
-    window.addEventListener('resize', resizeViewportWidth);
+  }, [setViewport]);
 
-    return () => {
-      window.removeEventListener('resize', resizeViewportWidth);
-    }
-  }, []);
+    useEventListener(
+      'resize',
+      () => {
+        setViewport(window.innerWidth);
+      },
+      typeof window !== 'undefined' ? window : undefined,
+      { passive: true }
+    )
   return (
     <>
       <div className={style.container}>

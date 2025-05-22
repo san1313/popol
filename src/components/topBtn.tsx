@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import style from '@/styles/page.module.css';
-import { usePageDataStore } from '@/providers/PageDataProvider';
+import { usePageDataStore } from '@/stores/PageDataStore';
 
 export default function TopBtn() {
   const {setCurrentIndex} = usePageDataStore((state) => state);

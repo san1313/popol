@@ -11,7 +11,6 @@
     --sidebar-width-closed: 50px;
     --sidebar-width-tablet: 20vw;
     --sidebar-width-tablet-closed: 50px;
-    --sidebar-width-mobile: 100vw;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -69,6 +68,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  main {
+    margin-left: var(--sidebar-width);
+  }
+
+  main.close {
+    margin-left: var(--sidebar-width-closed);
+  }
+
   ul {
     list-style: none;
   }
@@ -88,6 +95,16 @@
   @media (prefers-color-scheme: dark) {
     html {
       color-scheme: light;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    main {
+      margin-left: var(--sidebar-width-tablet);
+    }
+
+    main.close {
+      margin-left: var(--sidebar-width-tablet-closed);
     }
   }
 }

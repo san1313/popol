@@ -12,15 +12,37 @@ import {
   faUser, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ProjectSection from '@/components/ProjectSection';
-import SvgImages from './SvgImages';
-import CustomBadge from './CustomBadge';
-import { usePageDataStore } from '@/providers/PageDataProvider';
+import ProjectSection from '@/components/content/ProjectSection';
+import SvgImages from '../components/SvgImages';
+import CustomBadge from '../components/CustomBadge';
+import { usePageDataStore } from '@/stores/PageDataStore';
+import { useThrottleFn } from '@/hooks/useThrottleFn';
+import { useEventListener } from '@/hooks/useEventListener';
 
 export default function Content() {
-  const {currentIndex, incrementCurrentIndex, decrementCurrentIndex, sidebarIsOpen} = usePageDataStore((state) => state);
-  const contentsRef = useRef<HTMLDivElement>(null);
+  const {currentIndex, incrementCurrentIndex, decrementCurrentIndex} = usePageDataStore((state) => state);
   const titleRef = useRef<HTMLDivElement>(null);
+  const articlesRef = useRef<NodeListOf<HTMLDivElement> | []>([]);
+
+  const handleWheel = useThrottleFn((event) => {
+    const wheelEvent = event as WheelEvent;
+    if (wheelEvent.deltaY > 0 && currentIndex < articlesRef.current.length - 1) {
+      incrementCurrentIndex();
+    } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
+      decrementCurrentIndex();
+    }
+  }, 200)
+
+  useEventListener('wheel', handleWheel, typeof window !== 'undefined' ? window : null, { passive: false });
+
+  useEffect(() => {
+    articlesRef.current = document.querySelectorAll(`.${style.article}`);
+  }, []);
+
+  useEffect(() => {
+    articlesRef.current[currentIndex]?.scrollIntoView({ behavior: "smooth" });
+  }, [currentIndex]);
+
   useEffect(() => {
     if (titleRef.current) {
       const elements = titleRef.current.querySelector('article')!.children;
@@ -86,52 +108,10 @@ export default function Content() {
         }
       })
     }
-
-    function preventDefaultWheel(event: unknown) {
-      const wheelEvent = event as WheelEvent;
-      wheelEvent.preventDefault();
-    }
-
-    window.addEventListener("wheel", preventDefaultWheel, { passive: false });
-    return () => window.removeEventListener("wheel", preventDefaultWheel);
   }, []);
-
-  useEffect(() => {
-    const sections = document.querySelectorAll(`.${style.article}`);
-    let handleThrottle: NodeJS.Timeout | null = null;
-
-    function handleWheel(event: unknown) {
-      if (handleThrottle) return;
-      const wheelEvent = event as WheelEvent;
-      handleThrottle = setTimeout(() => {
-        if (wheelEvent.deltaY > 0 && currentIndex < sections.length - 1) {
-          incrementCurrentIndex();
-        } else if (wheelEvent.deltaY < 0 && currentIndex > 0) {
-          decrementCurrentIndex();
-        }
-        handleThrottle = null;
-      }, 200)
-    }
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    sections[currentIndex]?.scrollIntoView({ behavior: "smooth" });
-
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentIndex]);
-
-  useEffect(() => {
-    if (contentsRef.current) {
-      if (sidebarIsOpen) {
-        contentsRef.current.classList.remove(style.close)
-      } else {
-        contentsRef.current.classList.add(style.close)
-      }
-    }
-  }, [sidebarIsOpen])
 
   return (
     <>
-      <div className={style.content} ref={contentsRef}>
         <div className={`${style.article} ${style.title}`} ref={titleRef} id={'title'} data-idx={0}>
             <article>
               <h2>개발을 좋아하고 호기심이 넘치는</h2>
@@ -342,7 +322,6 @@ export default function Content() {
             </div>
           </article>
         </div>
-      </div>
     </>
   )
 }
