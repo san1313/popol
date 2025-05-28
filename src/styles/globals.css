@@ -1,7 +1,4 @@
-@layer theme, base, components, utilities;
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
-@import "tailwindcss/theme.css" layer(theme);
+@import 'tailwindcss';
 
 @layer base {
   :root {
@@ -9,8 +6,6 @@
     --foreground: #171717;
     --sidebar-width: 15vw;
     --sidebar-width-closed: 50px;
-    --sidebar-width-tablet: 20vw;
-    --sidebar-width-tablet-closed: 50px;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -68,14 +63,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  main {
-    margin-left: var(--sidebar-width);
-  }
-
-  main.close {
-    margin-left: var(--sidebar-width-closed);
-  }
-
   ul {
     list-style: none;
   }
@@ -84,7 +71,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    transition: margin 0.4s ease;
   }
 
   a {
@@ -99,12 +85,9 @@
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    main {
-      margin-left: var(--sidebar-width-tablet);
-    }
-
-    main.close {
-      margin-left: var(--sidebar-width-tablet-closed);
+    :root {
+      --sidebar-width: 20vw;
+      --sidebar-width-closed: 50px;
     }
   }
 }

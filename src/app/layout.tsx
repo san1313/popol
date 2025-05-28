@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../styles/globals.css";
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
-import SideBar from '@/containers/SideBar';
+import SideBar from '@/containers/main/SideBar';
 import React from 'react';
-import Main from "@/containers/Main";
+import Main from "@/containers/main/Main";
 
 export const metadata: Metadata = {
   title: "배창우 포트폴리오",
@@ -17,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
     <html lang="en">
       <body>
       <ReactQueryProvider>
-          <SideBar />
           <Main>{children}</Main>
+          <SideBar />
       </ReactQueryProvider>
       </body>
     </html>

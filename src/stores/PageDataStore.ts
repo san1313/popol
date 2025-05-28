@@ -23,7 +23,7 @@ type PageDataActions = {
 const initialState: PageDataState = {
   currentIndex: COMMON.DEFAULT_PAGE_INDEX,
   sidebarIsOpen: true,
-  viewport: COMMON.DEFAULT_VIEWPORT,
+  viewport: 0,
 }
 
 export const usePageDataStore = create<PageDataState & PageDataActions>((set) => ({

@@ -1,6 +1,5 @@
 'use client'
 import style from '@/styles/content.module.css';
-import sidebarStyle from '@/styles/sidebar.module.css';
 import { useEffect, useRef, WheelEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,8 +12,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectSection from '@/components/content/ProjectSection';
-import SvgImages from '../components/SvgImages';
-import CustomBadge from '../components/CustomBadge';
+import SvgImages from '../../components/SvgImages';
+import CustomBadge from '../../components/CustomBadge';
 import { usePageDataStore } from '@/stores/PageDataStore';
 import { useThrottleFn } from '@/hooks/useThrottleFn';
 import { useEventListener } from '@/hooks/useEventListener';
@@ -102,7 +101,7 @@ export default function Content() {
     })
 
     function updateActive(idx: number) {
-      document.querySelectorAll(`.${sidebarStyle.sidebar} li`).forEach((ele, i) => {
+      document.querySelectorAll('#sidebar li').forEach((ele, i) => {
         if (ele instanceof HTMLLIElement) {
           gsap.to(ele, { color: i === idx ? 'yellow' : 'white', duration: 0.5 })
         }
