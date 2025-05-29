@@ -1,0 +1,21 @@
+@utility gradient {
+    color: #D8F0FA;
+    background-image: linear-gradient(45deg, #D8F0FA, #C6E6F9, #AED1F1, #97BDFC, #84ACF7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@utility scrollArrow {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transform: rotate(-45deg);
+  opacity: 1;
+  box-sizing: border-box;
+}

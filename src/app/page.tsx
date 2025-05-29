@@ -4,16 +4,17 @@ import TopBtn from '@/components/topBtn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Content from '@/containers/main/Content';
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
 
   return (
-    <>
-      <div className={style.container}>
-        <Content />
-        <TopBtn />
-      </div>
-    </>
+      <ReactQueryProvider>
+          <div className={style.container}>
+            <Content />
+            <TopBtn />
+          </div>
+      </ReactQueryProvider>
   );
 }
