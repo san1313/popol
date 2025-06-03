@@ -97,7 +97,7 @@ export default function SideBar() {
         </>
       }
       <div
-        className="mb-0 md:mb-[10vh] relative flex justify-center flex-col font-black text-2xl opacity-0"
+        className="mb-0 md:mb-[10vh] relative flex justify-center flex-col font-black text-2xl md:opacity-0"
         ref={linkRef}>
         <a href={"mailto:skan143679@gmail.com"}
            className='w-full my-[1vh] text-center hover:text-white/70'><span

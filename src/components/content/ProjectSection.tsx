@@ -1,14 +1,31 @@
 'use client'
 import { useState } from 'react';
 import ProjectModal from './ProjectModal';
-import styles from '@/styles/ProjectSection.module.css';
 import { projectType } from '@/types/ProjectSection';
 
 export default function ProjectSection({ pNo }: { pNo: number }) {
   const [selectedProject, setSelectedProject] = useState<projectType>({ deployment: '', environment: '', id: '', imgCount: 0, languages: '', libraries: '', period: '', roles: [], title: '' });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const projects = [[
-    {
+  const projects = [
+    [{
+      id: 'popol',
+      title: '포트폴리오 페이지',
+      href: "https://github.com/san1313/popol",
+      period: "2025.04.28. ~ 2025.05.02.",
+      environment: "Nextjs, React",
+      languages: "TypeScript, HTML5, CSS",
+      libraries: "FontAwesome, gsap",
+      deployment: "Github, Vercel",
+      comments: [
+        "- 포트폴리오를 작성하는 겸 React를 조금 더 사용해 보기 위해 만들게 되었습니다.",
+        "- 모바일 / 태블릿 환경에서의 쾌적한 경험을 위해 반응형 웹으로 작성하였습니다.",
+        '- "깔끔한 ppt느낌이 나도록 하면 디자인적으로 좋지 않을까?" 라는 생각으로 디자인 해보았습니다.',
+        "- 프로젝트를 진행하며 적절한 컴포넌트 및 모듈의 사용에 대해 조금 더 생각해 볼 필요성을 느꼈습니다.",
+        "- 지금껏 HTML CSS는 단순하다고 생각했는데, 반응형이나 다크모드 등 변수가 많다는 것을 느꼈습니다."
+      ],
+      imgCount: 3,
+    }],
+    [{
       id: 'penservice',
       title: "PenService - 볼펜공장 MES 시스템",
       href: "https://github.com/san1313/PenService",
@@ -53,24 +70,6 @@ export default function ProjectSection({ pNo }: { pNo: number }) {
         "- ::after 가상요소를 사용하여 답변이 존재하는 게시글의 경우 답변완료 표시가 나타나도록 했습니다."
       ],
       imgCount: 6,
-    }],
-    [{
-      id: 'popol',
-      title: '포트폴리오 페이지',
-      href: "https://github.com/san1313/popol",
-      period: "2025.04.28. ~ 2025.05.02.",
-      environment: "Nextjs, React",
-      languages: "TypeScript, HTML5, CSS",
-      libraries: "FontAwesome, gsap",
-      deployment: "Github, Vercel",
-      comments: [
-        "- 포트폴리오를 작성하는 겸 React를 조금 더 사용해 보기 위해 만들게 되었습니다.",
-        "- 모바일 / 태블릿 환경에서의 쾌적한 경험을 위해 반응형 웹으로 작성하였습니다.",
-        '- "깔끔한 ppt느낌이 나도록 하면 디자인적으로 좋지 않을까?" 라는 생각으로 디자인 해보았습니다.',
-        "- 프로젝트를 진행하며 적절한 컴포넌트 및 모듈의 사용에 대해 조금 더 생각해 볼 필요성을 느꼈습니다.",
-        "- 지금껏 HTML CSS는 단순하다고 생각했는데, 반응형이나 다크모드 등 변수가 많다는 것을 느꼈습니다."
-      ],
-      imgCount: 3,
     }]
   ];
 
@@ -84,17 +83,19 @@ export default function ProjectSection({ pNo }: { pNo: number }) {
   };
 
   return (
-    <div className={styles.projectSection}>
-      <div className={styles.projectList}>
+    <div className='py-4'>
+      <div className='flex flex-col gap-6'>
         {projects[pNo].map((project) => (
-          <div key={project.id} className={styles.projectCard} onClick={() => openModal(project)}>
+          <div key={project.id}
+               className='p-6 border border-[#e5e5e5] rounded-[8px] bg-[#FAF6F1] dark:bg-[#374c6d] shadow-[0_2px_5px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_10px_rgba(0,0,0,0.5)] dark:inset-shadow-[0_1px_3px_rgba(255,255,255,0.15)] hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_6px_20px_rgba(0,0,0,0.8)] transition-shadow duration-300 ease-linear cursor-pointer'
+               onClick={() => openModal(project)}>
             <h2
-              className={styles.projectTitle}
+              className='mb-3 text-4xl font-bold text-[#3182ce] inline-block'
             >
               ■ {project.title}
             </h2>
 
-            <div className={styles.projectDetails}>
+            <div className='mt-2 flex flex-col gap-4 text-xl font-medium'>
               <p>개발 기간: {project.period}</p>
               <p>개발 환경: {project.environment}</p>
               <p>사용 언어: {project.languages}</p>

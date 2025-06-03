@@ -17,14 +17,12 @@ const svgIcons: Record<string, JSX.Element> = {
   ),
 };
 
-export default function SvgImages({
-                                    name,
-                                    style,
-                                  }: {
+export default function SvgImages({ name, className, style }: {
   name: string;
+  className?: string;
   style?: React.CSSProperties;
 }) {
   const Icon = svgIcons[name];
 
-  return Icon ? <span style={style}>{Icon}</span> : null;
+  return Icon ? <span className={className} style={style}>{Icon}</span> : null;
 }
