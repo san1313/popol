@@ -25,13 +25,16 @@ export default function Main({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (viewport > COMMON.MAX_VIEWPORT_MOBILE) {
-      gsap.to("main", {
-        marginLeft: sidebarIsOpen
-          ? 'var(--sidebar-width)'
-          : 'var(--sidebar-width-closed)',
-        duration: 0.4,
-        ease: 'sine.inOut',
-      })
+      const computedMargin = window.getComputedStyle(mainRef.current!).marginLeft;
+      gsap.fromTo(mainRef.current,
+        { marginLeft: computedMargin },
+        {
+          marginLeft: sidebarIsOpen
+            ? 'var(--sidebar-width)'
+            : 'var(--sidebar-width-closed)',
+          duration: 0.4,
+          ease: 'sine.inOut',
+        })
     } else if (mainRef.current) {
       mainRef.current.style = '';
     }
@@ -39,7 +42,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <main ref={mainRef}>
+      <main ref={mainRef} className={'ml-[var(--sidebar-width)]'}>
         {children}
       </main>
     </>

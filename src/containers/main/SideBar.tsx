@@ -36,7 +36,7 @@ export default function SideBar() {
           xPercent: -100,
           x: "50px",
           ease: "sine.inOut",
-          duration: 0.4
+          duration: 0.5,
         });
         gsap.to([tagRef.current, linkRef.current], { opacity: 0, duration: 0.4 });
         gsap.to([tagRef.current, linkRef.current],
@@ -46,7 +46,7 @@ export default function SideBar() {
           xPercent: 0,
           x: 0,
           ease: "sine.inOut",
-          duration: 0.5
+          duration: 0.35,
         });
         gsap.to([tagRef.current, linkRef.current], { opacity: 1, duration: 0.5 });
         gsap.to([tagRef.current, linkRef.current], { visibility: "visible" });

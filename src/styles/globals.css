@@ -79,6 +79,10 @@
     text-decoration: none;
   }
 
+  main{
+    transition: margin-left;
+  }
+
   @media (prefers-color-scheme: dark) {
     html {
       color-scheme: light;
