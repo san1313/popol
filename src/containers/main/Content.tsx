@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Skills from '@/components/content/Skills';
@@ -13,23 +13,29 @@ import Works from '@/components/content/Works';
 export default function Content() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    sectionRefs.current.forEach((section, idx) => {
+  useLayoutEffect(() => {
+    const updateActive = (idx: number) => {
+      document.querySelectorAll('#sidebar li').forEach((ele, i) => {
+        if (ele instanceof HTMLLIElement) {
+          gsap.to(ele, { color: i === idx ? 'yellow' : 'white', duration: 0.5 })
+        }
+      })
+    }
+
+    const triggers = sectionRefs.current.map((section, idx) =>
       ScrollTrigger.create({
         trigger: section,
         start: 'top 20%',
         end: 'bottom 20%',
         scrub: true,
         onEnter: () => updateActive(idx),
-        onEnterBack: () => updateActive(idx)
+        onEnterBack: () => updateActive(idx),
       })
-    })
+    )
 
-    function updateActive(idx: number) {
-      document.querySelectorAll('#sidebar li').forEach((ele, i) => {
-        if (ele instanceof HTMLLIElement) {
-          gsap.to(ele, { color: i === idx ? 'yellow' : 'white', duration: 0.5 })
-        }
+    return () => {
+      triggers.forEach((trigger) => {
+        trigger.kill()
       })
     }
   }, []);
@@ -51,7 +57,7 @@ export default function Content() {
         <div className='min-h-screen relative flex flex-col items-center justify-start'
              id={section.id} key={idx} ref={(el) => {
           if (el) sectionRefs.current[idx] = el;
-        }} data-idx={idx}>
+        }}>
           {section.content}
         </div>
       ))

@@ -28,6 +28,13 @@ export default function SideBar() {
     }
   }, [viewport]);
 
+  const fixAnchorEvent = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const hash = (e.target as HTMLAnchorElement).hash;
+    const idx = index.filter((obj) => `#${obj.id}` === hash)[0].idx;
+    setCurrentIndex(idx);
+  };
+
   const handleArrowClick = () => {
     arrowRef.current = !arrowRef.current;
     if (sidebarRef.current) {
@@ -55,24 +62,14 @@ export default function SideBar() {
     toggleSidebarIsOpen();
   };
 
-  const fixAnchorEvent = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const hash = (e.target as HTMLAnchorElement).hash;
-    const targetSection = document.querySelector(hash);
-    if (targetSection instanceof HTMLDivElement) {
-      targetSection.scrollIntoView({ behavior: "smooth" });
-      setCurrentIndex(Number(targetSection.dataset.idx));
-    }
-  };
-
   const index = [
-    { id: "title", txt: "홈" },
-    { id: "about", txt: "저는요" },
-    { id: "skill", txt: "활용 기술" },
-    { id: "work", txt: "경력" },
-    { id: "project", txt: "프로젝트" },
-    { id: "education", txt: "학력 및 교육" },
-    { id: "certificate", txt: "자격증" }
+    { id: "title", txt: "홈", idx: 0 },
+    { id: "about", txt: "저는요", idx: 1 },
+    { id: "skill", txt: "활용 기술", idx: 2 },
+    { id: "work", txt: "경력", idx: 3 },
+    { id: "project", txt: "프로젝트", idx: 4 },
+    { id: "education", txt: "학력 및 교육", idx: 6 },
+    { id: "certificate", txt: "자격증", idx: 7 },
   ];
 
   return (
@@ -90,7 +87,9 @@ export default function SideBar() {
                ref={tagRef}>
             <ul>
               {index.map((item, idx) =>
-                <li key={idx} className="py-[1vh]"><a href={`#${item.id}`} onClick={fixAnchorEvent}>{item.txt}</a></li>
+                <li key={idx} className="py-[1vh]"
+                    style={{ color: idx === 0 ? 'yellow' : 'white' }}><a href={`#${item.id}`}
+                                                                         onClick={fixAnchorEvent}>{item.txt}</a></li>
               )}
             </ul>
           </div>
