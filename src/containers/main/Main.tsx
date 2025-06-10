@@ -37,6 +37,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
         })
     } else if (mainRef.current) {
       mainRef.current.style = '';
+      mainRef.current.className = '';
     }
   }, [sidebarIsOpen, viewport]);
 
