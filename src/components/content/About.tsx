@@ -36,7 +36,7 @@ export default function About() {
         className='flex flex-col md:flex-row justify-start'><FontAwesomeIcon
         className='w-5 h-5 mr-4' icon={faLocationDot} />위치</span></h2>
       <h3
-        className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- 대구광역시 북구 구암동</h3>
+        className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- 서울특별시 영등포구 여의도동</h3>
       </div>
       <div>
       <h2 className='text-[1.7rem] md:text-3xl font-bold'><span
