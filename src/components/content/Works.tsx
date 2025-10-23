@@ -20,7 +20,7 @@ export default function Works() {
           <h3 className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>■ 수행 업무</h3>
           <div className='ml-8'>
             <p
-              className='mt-1 lg:mt-1.5 sm:text-xl md:text-base lg:text-xl font-medium'>1. <b>Spring</b> 및 <b>Samsung Anyframe</b> 프레임워크를 사용한 금융 웹 풀스택 개발</p>
+              className='mt-1 lg:mt-1.5 sm:text-xl md:text-base lg:text-xl font-medium'>1. <b>Spring</b> 및 <b>Samsung Anyframe</b> 프레임워크를 사용한 웹 풀스택 개발</p>
             <p className='ml-8 mt-1 lg:mt-1.5 sm:text-xl md:text-base lg:text-xl font-medium'>- 고도화 작업 및 신규 로직을 위한 DB 쿼리 작성/수정</p>
             <p className='ml-8 mt-1 lg:mt-1.5 sm:text-xl md:text-base lg:text-xl font-medium'>- 신규 페이지 작성 및 로직 연결, 데이터 검증 로직 개발</p>
             <p

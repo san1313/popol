@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCakeCandles,
   faEnvelope,
-  faLocationDot,
   faPhone,
   faUser, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
@@ -34,13 +33,6 @@ export default function About() {
       <div>
       <h2 className='text-[1.7rem] md:text-3xl font-bold'><span
         className='flex flex-col md:flex-row justify-start'><FontAwesomeIcon
-        className='w-5 h-5 mr-4' icon={faLocationDot} />위치</span></h2>
-      <h3
-        className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- 서울특별시 영등포구 여의도동</h3>
-      </div>
-      <div>
-      <h2 className='text-[1.7rem] md:text-3xl font-bold'><span
-        className='flex flex-col md:flex-row justify-start'><FontAwesomeIcon
         className='w-5 h-5 mr-4' icon={faPhone} />연락처</span></h2>
       <h3
         className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- 010-6632-4496</h3>
@@ -49,7 +41,7 @@ export default function About() {
       <h2 className='text-[1.7rem] md:text-3xl font-bold'><span
         className='flex flex-col md:flex-row justify-start'><FontAwesomeIcon
         className='w-5 h-5 mr-4' icon={faEnvelope} />이메일</span></h2>
-      <h3 className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- <a
+      <h3 className='mt-2.5 md:mt-0 text-[1.2rem] md:text-2xl font-medium'>- <a className='underline'
         href={"mailto:skan134679@gmail.com"}>skan134679@gmail.com</a></h3>
       </div>
       <div>
